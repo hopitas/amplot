@@ -1,0 +1,77 @@
+body 
+{
+    font-family: Arial;
+    font-size: 9pt;
+}
+
+#main
+{
+    width:1200px;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#description
+{
+    font-family: Arial;
+    font-size: 9pt;
+    Height: 50px;
+}
+
+.DivChart
+{
+    margin-top:10px;	
+	margin-left: 10px; 
+	width: 1200px; 
+    overflow:hidden;
+	position:relative;
+}
+.ChartDetail{
+       height:300px;
+       width:800px;
+       display:inline-block;
+       overflow:hidden;
+}
+.DivPlotArea{
+	width: 0px;
+	height: 0px;
+	top: 313px;
+	left: 34px;
+	position: absolute;
+	padding: 0px; 
+}
+
+.DivChartWhole{
+	height: 150px; 
+        width: 1200px; 
+        display: inline-block;
+}
+
+.handleDivDrag{
+	background-image: url(../images/divbg.png);
+	width: 0px;
+	height: 0px;
+	top: 0px;
+	left: 0px;
+	position: relative;
+	margin: 0px;
+
+}
+
+.handleBarOffRight{
+	background-image: url(../images/handle.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	margin: 0 -6px;
+}
+
+.handleBarOffLeft{
+	background-image: url(../images/handle.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	margin: 0 -6px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.ui-resizable-handle {background-image:none !important;}
+}

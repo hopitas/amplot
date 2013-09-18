@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Concentration</title>
+        <script src="js/highstock.js"></script>
+        <script type="text/javascript" src="js/jqxbuttons.js"></script>
+        <!-- creating the chart -->
+        <script type="text/javascript">
+
+          
+    
+                    var seriesOptions = [],
+                    colors = Highcharts.getOptions().colors;
+                 
+               $.getJSON('importdir.php',	function(data) {
+
+                    $.each(data, function(i, value) {
+
+                        seriesOptions[i] = {
+                            type: value.type,
+                            name: value.name,
+                            tooltip: value.tooltip, 
+                            data: value.data,
+                            yAxis: value.yaxis
+                        };
+		
+                        createChart();
+
+                    });
+                });
+
+                    // create the chart when all data is loaded
+                    function createChart() {
+
+                        chart = new Highcharts.StockChart({
+                            chart : {
+                                renderTo : 'contentchart'
+                                // marginRight: 120 // make room for the legend
+                            },
+                            legend: {
+                                enabled: true,
+                                align: 'right',
+                                layout: 'vertical',
+                                verticalAlign: 'top',
+                                y: 60
+                            },
+                            rangeSelector: {
+                                selected: 1,
+                                inputBoxStyle: {
+                                    top: '40px',
+                                    right: '10px'
+                                },
+                                buttons: [{
+                                        type: 'day',
+                                        count: 1,
+                                        text: '1d'
+                                    },
+                                    {
+                                        type: 'week',
+                                        count: 1,
+                                        text: '1w'
+                                    },
+                                    {
+                                        type: 'month',
+                                        count: 1,
+                                        text: '1m'
+                                    },
+                                    {
+                                        type: 'all',
+                                        text: 'All'
+                                    }]
+                            },
+
+                            title : {
+                                text : 'Concentration'
+                            },
+
+                            yAxis: [{
+                                    title: {
+                                        text: 'Concentration [1/cm^3]'
+                                    },
+                                    height: 350,
+                                    lineWidth: 2
+                                }],
+                            series: seriesOptions
+                        });
+                    }
+
+
+
+           
+        </script>
+
+    </head>
+    <body style="font-size:80%;">
+
+<form action="upload_file.php" method="post"
+enctype="multipart/form-data">
+<input type="file" name="file" id="file"><br>
+<input type="submit" name="submit" value="Submit">
+</form>
+<form action="deletefiles.php" method="post"
+enctype="multipart/form-data">
+    <input type="submit" name="submit" value="Clear">
+    </form>
+        <div id="contentchart" style="height: 530px; min-width: 500px">
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+
+        <link rel="stylesheet" type="text/css" href="css/jchartfx.css"/>
+        <script type="text/javascript" src="js/jchartfx.system.js"></script>
+        <script type="text/javascript" src="js/jchartfx.coreVector.js"></script>  
+        <script type="text/javascript" src="js/jchartfx.coreVector3d.js"></script>  
+        <script type="text/javascript" src="js/jchartfx.surface.js"></script>  
+        <script type="text/javascript" src="js/jchartfx.advanced.js"></script>
+
+
+
+
+    </head>
+    <body onload="loadChart()">
+        <div id="ChartDiv" style="width:800px;height:600px"></div>
+        <script type="text/javascript" language="javascript">
+            var chart1;
+
+            function loadChart()
+            {     
+          
+          
+          
+          
+          
+                chart1 = new cfx.Chart();
+
+                
+                chart1.setGallery(cfx.Gallery.Contour);
+                chart1.getView3D().setEnabled(true);
+                var nSeries;
+                nSeries = 20;
+                var nPoints;
+                nPoints = 20;
+var nSterp;
+nStep = 5;
+                
+                var data = chart1.getData();
+                data.setSeries(nSeries);
+                data.setPoints(nPoints);
+     //           data.setStep(nStep);
+                var i;
+                var j;
+                for(i = 0;i < nSeries;i++)
+                {
+                    for(j = 0;j < nPoints;j++)
+                    {
+                        data.setItem(i, j, Math.sin((((i * 2) * Math.PI) / (nSeries-1))) * Math.cos(((((j + 5) * 2) * Math.PI) / (nPoints-1))) * 100);
+                    }
+                }
+               chart1.getSeries().getItem(0).setColor("#EC0014");
+            chart1.getSeries().getItem(0).setAlternateColor("#0096EC");
+                chart1.getLegendBox().setVisible(false);
+                var myContour;
+                myContour = (chart1.getGalleryAttributes());
+                myContour.setShowContourLines(true);
+
+    
+                var divHolder = document.getElementById('ChartDiv');
+                chart1.create(divHolder);            
+            }
+
+        </script>
+    </body>
+</html>
