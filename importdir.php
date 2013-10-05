@@ -62,9 +62,8 @@ $i++;
 //json encoding the data
 
 $data = new Data();
-$data->name = "data";
-$data->tooltip = "valueDecimals: 2";
-$data->type = "";
+$data->name = "Concentration";
+$data->type = "line";
 $data->yaxis = 0;
 $data->data = $rowsdata;
 
